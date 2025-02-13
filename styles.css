@@ -48,7 +48,7 @@ body {
     line-height: 40px;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0PX 0PX 12PX 7PX;
+    box-shadow: 0PX 0PX 10PX 4PX;
 }
 
 #menu-button {
