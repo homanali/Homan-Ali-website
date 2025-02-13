@@ -17,26 +17,71 @@ document.addEventListener("DOMContentLoaded", function () {
         const translations = {
             en: {
                 welcome: "Welcome ",
-                whoAmI: "Who Am I",
+                whoAmI: " “Build a mind that seeks knowledge, a heart that values truth, and hands that create a better world.” ",
                 expertise: "I Have Worked On These Programs",
-                programmingLanguages: "My name is Homan Ali Abdi I live in Sheladze I am a student in Duhok University Department of Electrical and Computer Engineering I am working to get a bachelor's degree",
-                backgroundColor: "linear-gradient(135deg, #20b2aa, #444)" // English background color
+                programmingLanguages:" C++  | C#  | Python | HTML | CSS | JavaScript ",
+                backgroundColor: "linear-gradient(185deg, #dc143c, #444)" // English background color
             },
+
             ku: {
-                welcome: "بخێرهاتی",
-                whoAmI: "ئەس كي مە",
+                welcome: "بناڤێ خودێ مەزن و دلوڤان ",
+                whoAmI:"عەقڵێک دروست بکە کە بەدوای زانستدا بگەڕێت، دڵێک کە بەهای حەقیقەت بدات، دەستێک دروست بکە کە جیهانێکی باشتر دروست بکات’",
                 expertise: "پروگرامی من كار لسەر كری",
-                programmingLanguages: "ناڤێ من هومان علي عبدي ئەس خەلكی شێلادزێم - قوتابيمه ل زانكويا دهوك بەشي ئەندازياري پشكي كارەباو كومپيوتەر ئەس كار دكەم دا باوەرناما بكالريوس ب دەست ڤه بينم",
-                backgroundColor: "linear-gradient(135deg, #ff6347, #444)" // Kurdish background color
+                programmingLanguages: "سی پلاس پلاس | سی شارپ | پايثون | ئچ تی ئم ئل | سی ئس ئس | جاڤا سكيرپت ",
+                backgroundColor: "linear-gradient(185deg, #ff6347, #444)" // Kurdish background color
             },
             ar: {
                 welcome: "مرحباً",
-                whoAmI: "من انا؟",
+                whoAmI: "بناء عقل يسعى إلى المعرفة، وقلب يقدر الحقيقة، وأيدي تخلق عالماً أفضل.",
                 expertise: "البرنامج الذي عملت عليه",
-                programmingLanguages: "اسمي هومان علي عبدي، من شيلادزي، طالب في جامعة دهوك، قسم الهندسة الكهربائية والحاسوب",
-                backgroundColor: "linear-gradient(135deg, #4682b4, #444)" // Arabic background color
+                programmingLanguages: "سی پلاس پلاس | سی شارپ | پايثون | ئچ تی ئم ئل | سی ئس ئس | جاڤا سكيرپت ",
+                backgroundColor: "linear-gradient(185deg, #daa520, #444)" // Arabic background color
+            }
+        };document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.getElementById("menu-button");
+    const menu = document.getElementById("dropdown-menu");
+
+    menuButton.addEventListener("click", function () {
+        menu.classList.toggle("show");
+    });
+
+    const languageButton = document.getElementById("language-button");
+    const languageMenu = document.getElementById("language-menu");
+
+    languageButton.addEventListener("click", function () {
+        languageMenu.classList.toggle("show");
+    });
+
+    window.changeLanguage = function (lang) {
+        const translations = {
+            ku: {
+                welcome: "بناڤێ خودێ مەزن و دلوڤان ",
+                whoAmI: "عەقڵێک دروست بکە کە بەدوای زانستدا بگەڕێت، دڵێک کە بەهای حەقیقەت بدات، دەستێک دروست بکە کە جیهانێکی باشتر دروست بکات.",
+                expertise: "پروگرامی من كار لسەر كری",
+                programmingLanguages: "سی پلاس پلاس | سی شارپ | پايثون | ئچ تی ئم ئل | سی ئس ئس | جاڤا سكيرپت ",
+                aboutMe: "",
+                backgroundColor: "linear-gradient(135deg, #ff6347, #444)" // Kurdish background
+            },
+            ar: {
+                welcome: "مرحباً",
+                whoAmI: "عەقڵێک دروست بکە کە بەدوای زانستدا بگەڕێت، دڵێک کە بەهای حەقیقەت بدات، دەستێک دروست بکە کە جیهانێکی باشتر دروست بکات.",
+                expertise: "مهاراتي",
+                programmingLanguages: "لغات البرمجة",
+                aboutMe:"",
+                backgroundColor: "linear-gradient(135deg, #4682b4, #444)" // Arabic background
             }
         };
+
+        if (translations[lang]) {
+            document.querySelector('#S1 h1').textContent = translations[lang].welcome;
+            document.getElementById('S1').style.background = translations[lang].backgroundColor;
+            document.querySelector('.section h2').textContent = translations[lang].whoAmI;
+            document.querySelectorAll('.section h3')[1].textContent = translations[lang].expertise;
+            document.querySelectorAll('.section h3')[1].textContent = translations[lang].programmingLanguages;
+            document.querySelector('.section p').innerHTML = translations[lang].aboutMe;
+        }
+    };
+});
 
         // Change the welcome section text
         document.querySelector('#S1 h1').textContent = translations[lang].welcome;

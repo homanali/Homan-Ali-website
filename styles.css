@@ -3,7 +3,7 @@
 body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 10;
     background-color: #ffffff !important;
     color: white;
 }
@@ -16,7 +16,7 @@ body {
 
 #S1 {
     text-align: center;
-    background: linear-gradient(135deg, #20b2aa, #444); /* Default background */
+    background: linear-gradient(190deg, #20b2aa, #444); /* Default background */
     color: #ffffff;
     padding: 30px;
     font-size: 15px;
@@ -25,14 +25,15 @@ body {
 
 #new-design {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 #new-design img {
-    width: 60%;
-    max-width: 100px;
+    width: 50%;
+    max-width: 90px;
     height: auto;
     border-radius: 8px;
+    box-shadow: 0PX 0PX 12PX 0PX;
 }
 
 #menu-button, #language-button {
@@ -40,13 +41,14 @@ body {
     top: 20px;
     width: 40px;
     height: 40px;
-    background: #444;
+    background: #2f4f4f;
     color: white;
     font-size: 20px;
     text-align: center;
     line-height: 40px;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0PX 0PX 12PX 7PX;
 }
 
 #menu-button {
@@ -58,9 +60,8 @@ body {
 }
 
 #dropdown-menu, #language-menu {
-     color: #dcdcdc;
     position: absolute;
-    background: black;
+    background: #f0ffff;
     padding: 10px;
     border-radius: 8px;
     opacity: 0;
@@ -98,8 +99,9 @@ ul {
 
 ul li {
     font-size: 15px;
-    padding: 7px;
+    padding: 8px;
     background: #2f4f4f;
+    color: #FFF;
     margin: 2px;
     border-radius: 8px;
     cursor: pointer;
@@ -111,6 +113,7 @@ ul li {
     gap: 10px;
     flex-wrap: wrap;
     margin-top: 20px;
+    background: #008b8b;
 }
 
 #socials a {
@@ -120,8 +123,10 @@ ul li {
     font-weight: bold;
     padding: 8px 12px;
     border-radius: 5px;
-    background:#2f4f4f;
+    background:#008080;
     transition: 0.3s;
+    box-shadow: 0px 0px 0px 0PX;
+
 }
 
 #socials a:hover {
