@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homan Ali | Electrical & Computer Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --kurdish-red: #d40000;
+            --kurdish-green: #238823;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(214, 0, 0, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(35, 136, 35, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+            z-index: -1;
+        }
+        
+        .circuit-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(214,0,0,0.05)" stroke-width="0.5"/><path d="M50,0 L50,100 M0,50 L100,50" stroke="rgba(214,0,0,0.05)" stroke-width="0.3"/><circle cx="20" cy="20" r="1" fill="rgba(214,0,0,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(214,0,0,0.1)"/></svg>');
+            background-size: 100px 100px;
+            opacity: 0.3;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(26, 42, 108, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--kurdish-red);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 18px;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--kurdish-red);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--kurdish-red);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--kurdish-red);
+            display: block;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .department-badge {
+            display: inline-block;
+            background: rgba(214, 0, 0, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin: 10px 0;
+            font-size: 1.2rem;
+            border: 2px solid var(--kurdish-red);
+            backdrop-filter: blur(5px);
+        }
+        
+        .kurdish-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(35, 136, 35, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            border: 2px solid var(--kurdish-green);
+            backdrop-filter: blur(5px);
+        }
+        
+        .kurdish-badge i,
+        .department-badge i {
+            margin-right: 10px;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 40px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icons a:hover {
+            background: var(--kurdish-red);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(214, 0, 0, 0.4);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: var(--kurdish-red);
+            margin: 15px auto;
+            border-radius: 3px;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            background: rgba(26, 42, 108, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--kurdish-red);
+        }
+        
+        .kurdish-intro {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.5rem;
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(35, 136, 35, 0.15);
+            border-radius: 15px;
+            border-right: 4px solid var(--kurdish-green);
+            line-height: 1.8;
+            text-align: right;
+            direction: rtl;
+        }
+        
+        .profile-img {
+            flex: 1;
+            position: relative;
+        }
+        
+        .profile-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-img:hover img {
+            transform: scale(1.03);
+        }
+        
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--kurdish-red);
+            border-radius: 20px;
+            z-index: -1;
+        }
+        
+        /* Enhanced Skills Section */
+        .skills {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .skill-card {
+            background: rgba(26, 42, 108, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--kurdish-red);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--kurdish-red);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .skill-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* New Skill Visualization */
+        .skill-visualization {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-badge {
+            background: rgba(214, 0, 0, 0.2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(214, 0, 0, 0.3);
+        }
+        
+        .skill-badge:hover {
+            background: rgba(214, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .skill-badge i {
+            color: var(--kurdish-red);
+        }
+        
+        /* Skill Level Visualization */
+        .skill-levels {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--kurdish-red);
+            border-radius: 10px;
+            position: relative;
+            transition: width 1s ease;
+        }
+        
+        .skill-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: rgba(26, 42, 108, 0.7);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            background: rgba(214, 0, 0, 0.2);
+            border-color: var(--kurdish-red);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--kurdish-red);
+            margin-bottom: 20px;
+        }
+        
+        .contact-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--kurdish-red);
+            text-decoration: underline;
+        }
+        
+        /* Visitor Counter */
+        .visitor-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 15px 0;
+            font-size: 1rem;
+            color: var(--kurdish-red);
+            font-weight: 500;
+        }
+        
+        .visitor-counter i {
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--kurdish-red);
+        }
+        
+        .footer-section p {
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+        
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating Elements Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .floating-element {
+            position: absolute;
+            font-size: 1.2rem;
+            color: rgba(214, 0, 0, 0.4);
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .profile-img {
+                margin-top: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .kurdish-intro {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div id="particles-js"></div>
+    <div class="circuit-overlay"></div>
+    
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-microchip"></i>
+                Homan<span>Ali</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Homan Ali<br><span>Electrical & Computer Engineer</span></h1>
+                <p>Specializing in the intersection of hardware and software systems.</p>
+                
+                <div class="department-badge">
+                    <i class="fas fa-university"></i> Department of Electricity & Computers
+                </div>
+                
+                <div class="kurdish-badge">
+                    <i class="fas fa-flag"></i> Kurdistan
+                </div>
+                
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/16sXJZYHem/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/homan_alii?s=21" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/yourprofile" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/homan_alii?igsh=MXR5NTQzZTFxemRyOQ%3D%3D&utm_source=qr" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Electrical & Computer Engineer</h3>
+                    <p>I'm a dedicated professional in the Department of Electricity and Computers, with expertise spanning from electrical systems to computer engineering applications.</p>
+                    
+                    <div class="kurdish-intro">
+                        ناڤێ من هومان على عبدى. ئەس ئاکنجيێ ناحيا شێلادزێ مه لسەر ب قەزايا ئامێديێ ڤە...
+                        قوتابى مه ل زانكويا دهۆک پشكا ئەندازيارى بەشێ کارەبا و كومپيوتەر.
+                    </div>
+                    
+                    <p>My academic and professional journey focuses on integrating electrical engineering principles with modern computing technologies to create innovative solutions.</p>
+                </div>
+                <div class="profile-img">
+                    <img src=" photo_2025-07-03_23-09-16.jpg " alt="Homan Ali">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Enhanced Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-container">
+                <!-- Electrical Engineering Card -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="skill-title">Electrical Engineering</h3>
+                    
+                    <div class="skill-visualization">
+                        <div class="skill-badge">
+                            <i class="fas fa-project-diagram"></i> Microcontrol
+                        </div>
+                        <div class="skill-badge">
+                            <i class="fas fa-plug"></i> Classic Electricity
+                        </div>
+                        <div class="skill-badge">
+                            <i class="fas fa-bolt"></i> Circuit Design 
+                        </div>
+                    </div>
+                    
+                    <div class="skill-levels">
+                        <div class="skill-bar-label">
+                            <span>AutoCAD (2D/3D)</span>
+                            <span>Expert</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                        
+                        <div class="skill-bar-label">
+                            <span>Proteus (ISIS)</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                        
+                        <div class="skill-bar-label">
+                            <span>Multisim</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Software & Tools Card -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="skill-title">Software & Tools</h3>
+                    
+                    <div class="skill-visualization">
+                        <div class="skill-badge">
+                            <i class="fab fa-microsoft"></i> Office Suite
+                        </div>
+                        <div class="skill-badge">
+                            <i class="fas fa-network-wired"></i> DOSBox
+                        </div>
+                        <div class="skill-badge">
+                            <i class="fas fa-terminal"></i> Arduino & Cisco Packet Tracer 
+                        </div>
+                    </div>
+                    
+                    <div class="skill-levels">
+                        <div class="skill-bar-label">
+                            <span>Microsoft Office</span>
+                            <span>Expert</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                        
+                        <div class="skill-bar-label">
+                            <span>DOSbox </span>
+                            <span>Proficient</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                        
+                        <div class="skill-bar-label">
+                            <span>Arduino & C.P.Tracer</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Programming & Development Card -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-title">Programming & Development</h3>
+                    
+                    <div class="skill-visualization">
+                        <div class="skill-badge">
+                            <i class="fab fa-html5"></i> HTML
+                        </div>
+                        <div class="skill-badge">
+                            <i class="fab fa-css3-alt"></i> CSS
+                        </div>
+                        <div class="skill-badge">
+                            <i class="fab fa-js"></i> JavaScript
+                        </div>
+                    </div>
+                    
+                    <div class="skill-levels">
+                        <div class="skill-bar-label">
+                            <span>HTML/CSS</span>
+                            <span>Expert</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                        
+                        <div class="skill-bar-label">
+                            <span>JavaScript</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                        
+                        <div class="skill-bar-label">
+                            <span>C++ & Python</span>
+                            <span>Expert</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Systems & Environments Card -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="skill-title">Systems & Environments</h3>
+                    
+                    <div class="skill-visualization">
+                        <div class="skill-badge">
+                            <i class="fab fa-ubuntu"></i> Ubuntu
+                        </div>
+                        <div class="skill-badge">
+                            <i class="fas fa-shield-alt"></i> Kali Linux
+                        </div>
+                        <div class="skill-badge">
+                            <i class="fab fa-windows"></i> Windows
+                        </div>
+                    </div>
+                    
+                    <div class="skill-levels">
+                        <div class="skill-bar-label">
+                            <span>Ubuntu Linux</span>
+                            <span>Expert</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                        
+                        <div class="skill-bar-label">
+                            <span>Kali Linux</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                        
+                        <div class="skill-bar-label">
+                            <span> Windows </span>
+                            <span>Expert</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Connect With Me</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-info">
+                        <a href="mailto:homanali375@example.com">homan.alii@example.com</a>
+                    </p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="contact-title">Department</h3>
+                    <p class="contact-info">
+                        Department of Electricity & Computers<br>
+                        University of Duhok
+                    </p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="contact-title">Location</h3>
+                    <p class="contact-info">
+                        Shiladz, Duhok, Kurdistan Region<br>
+                        Iraq
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="visitor-counter">
+                <i class="fas fa-eye"></i>
+                <span id="visitor-count">Loading...</span>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About This Site</h3>
+                    <p>A professional showcase of my skills and experience in electrical and computer engineering.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#about" style="color: #bbb; text-decoration: none;">About Me</a></p>
+                    <p><a href="#skills" style="color: #bbb; text-decoration: none;">Technical Skills</a></p>
+                    <p><a href="#contact" style="color: #bbb; text-decoration: none;">Connect</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Professional Networks</h3>
+                    <div class="social-icons" style="justify-content: center;">
+                        <a href="https://www.facebook.com/share/16sXJZYHem/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/yourprofile" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/homan_alii?s=21" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Homan Ali. All rights reserved.</p>
+                <p>Electrical & Computer Engineer | Shiladz, Duhok, Kurdistan</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#d40000" },
+                shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#d40000",
+                    opacity: 0.3,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 1 } },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Visitor Counter System
+        function updateVisitorCounter() {
+            // Try localStorage first
+            if (typeof(Storage) !== "undefined") {
+                let count = localStorage.getItem('siteVisits');
+                
+                if (count) {
+                    count = parseInt(count) + 1;
+                } else {
+                    count = 1;
+                }
+                
+                localStorage.setItem('siteVisits', count);
+                document.getElementById('visitor-count').textContent = count;
+            } 
+            // Fallback to sessionStorage
+            else if (typeof(sessionStorage) !== "undefined") {
+                let count = sessionStorage.getItem('siteVisits');
+                
+                if (count) {
+                    count = parseInt(count) + 1;
+                } else {
+                    count = 1;
+                }
+                
+                sessionStorage.setItem('siteVisits', count);
+                document.getElementById('visitor-count').textContent = count + " (session)";
+            }
+            // Ultimate fallback
+            else {
+                document.getElementById('visitor-count').textContent = "Many";
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Create floating circuit elements
+        function createFloatingElements() {
+            const overlay = document.querySelector('.circuit-overlay');
+            const elements = ['resistor', 'capacitor', 'inductor', 'transistor', 'chip'];
+            
+            elements.forEach((element, index) => {
+                const el = document.createElement('div');
+                el.className = floating-element ${element};
+                el.innerHTML = <i class="fas fa-${element === 'chip' ? 'microchip' : element}"></i>;
+                el.style.left = ${10 + (index * 15)}%;
+                el.style.top = ${20 + (index * 10)}%;
+                el.style.fontSize = ${1 + (index * 0.2)}rem;
+                el.style.color = rgba(214, 0, 0, ${0.3 + (index * 0.1)});
+                el.style.animationDuration = ${10 + index * 2}s;
+                overlay.appendChild(el);
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            updateVisitorCounter();
+            createFloatingElements();
+            
+            // Animate progress bars
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
